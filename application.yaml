@@ -11,7 +11,7 @@ spec:
   source:
     path: test
     repoURL: https://github.com/zachseifts/argocd-test.git
-    targetRevision: HEAD
+    targetRevision: adding-in-backend
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
