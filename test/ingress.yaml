@@ -25,7 +25,7 @@ kind: Ingress
 metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
-  name: testing-ingress
+  name: backend-ingress
   labels:
     app: testing
 spec:
