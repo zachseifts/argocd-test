@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
-  name: testing-ingress
+  name: admin-ingress
   labels:
     app: testing
 spec:
@@ -12,7 +12,7 @@ spec:
   - host: testing.example.com
     http:
       paths:
-      - path: /
+      - path: /admin
         backend:
           service:
             name: nginx-service
@@ -56,7 +56,7 @@ spec:
   - host: testing.example.com
     http:
       paths:
-      - path: /frontend
+      - path: /
         backend:
           service:
             name: frontend-service
