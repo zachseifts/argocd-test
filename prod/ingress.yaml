@@ -1,0 +1,65 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  name: admin-ingress
+  labels:
+    app: testing
+spec:
+  ingressClassName: public
+  rules:
+  - host: testing.example.com
+    http:
+      paths:
+      - path: /admin
+        backend:
+          service:
+            name: admin-service
+            port:
+              number: 80
+        pathType: Prefix
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  name: backend-ingress
+  labels:
+    app: testing
+spec:
+  ingressClassName: public
+  rules:
+  - host: testing.example.com
+    http:
+      paths:
+      - path: /api
+        backend:
+          service:
+            name: backend-service
+            port:
+              number: 80
+        pathType: Prefix
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  name: frontend-ingress
+  labels:
+    app: testing
+spec:
+  ingressClassName: public
+  rules:
+  - host: testing.example.com
+    http:
+      paths:
+      - path: /
+        backend:
+          service:
+            name: frontend-service
+            port:
+              number: 80
+        pathType: Prefix
