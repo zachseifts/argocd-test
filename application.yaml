@@ -6,8 +6,8 @@ metadata:
 spec:
   description: A testing project.
   destinations:
-  - name: '*',
-    namespace: '*',
+  - name: '*'
+    namespace: '*'
     server: https://kubernetes.default.svc
   sourceRepos:
   - https://github.com/zachseifts/argocd-test.git
