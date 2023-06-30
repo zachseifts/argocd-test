@@ -3,8 +3,7 @@ kind: ConfigMap
 metadata:
   name: redis-config
   labels:
-    app: argocd-test
-    env: test
+    app: testing
 data:
   redis-config: |
     maxmemory 48mb
@@ -15,23 +14,21 @@ kind: Service
 metadata:
   name: redis-service
   labels:
-    app: argocd-test
-    env: test
+    app: testing
 spec:
   ports:
   - protocol: TCP
     port: 6379
     targetPort: 6379
   selector:
-    app: argocd-test
+    app: testing
 ---
 apiVersion: v1
 kind: Pod
 metadata:
   name: redis
   labels:
-    app: argocd-test
-    env: test
+    app: testing
 spec: 
   containers:
     - name: redis
