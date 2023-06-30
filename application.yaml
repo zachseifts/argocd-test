@@ -1,4 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata: 
+  name: testing
+  namespace: argocd
+spec:
+  description: A testing project.
+---
+apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: testing-test
@@ -7,7 +15,7 @@ spec:
   destination:
     namespace: testing-dev
     server: https://kubernetes.default.svc
-  project: default
+  project: testing
   source:
     path: test
     repoURL: https://github.com/zachseifts/argocd-test.git
@@ -28,7 +36,7 @@ spec:
   destination:
     namespace: testing-stage
     server: https://kubernetes.default.svc
-  project: default
+  project: testing
   source:
     path: stage
     repoURL: https://github.com/zachseifts/argocd-test.git
@@ -49,7 +57,7 @@ spec:
   destination:
     namespace: testing-prod
     server: https://kubernetes.default.svc
-  project: default
+  project: testing
   source:
     path: prod
     repoURL: https://github.com/zachseifts/argocd-test.git
