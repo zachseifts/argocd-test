@@ -19,3 +19,26 @@ spec:
             port:
               number: 80
         pathType: Prefix
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  name: testing-ingress
+  labels:
+    app: testing
+spec:
+  ingressClassName: public
+  rules:
+  - host: testing.example.com
+    http:
+      paths:
+      - path: /api
+        backend:
+          service:
+            name: backend-service
+            port:
+              number: 80
+        pathType: Prefix
+
