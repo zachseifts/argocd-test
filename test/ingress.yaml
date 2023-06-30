@@ -15,7 +15,7 @@ spec:
       - path: /
         backend:
           service:
-            name: redis-service
+            name: nginx-service
             port:
               number: 80
         pathType: Prefix
