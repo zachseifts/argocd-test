@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: redis-config
   labels:
-    app: ea-demo
+    app: argocd-test
     env: test
 data:
   redis-config: |
@@ -15,7 +15,7 @@ kind: Service
 metadata:
   name: redis-service
   labels:
-    app: ea-demo
+    app: argocd-test
     env: test
 spec:
   ports:
@@ -23,14 +23,14 @@ spec:
     port: 6379
     targetPort: 6379
   selector:
-    app: ea-demo
+    app: argocd-test
 ---
 apiVersion: v1
 kind: Pod
 metadata:
   name: redis
   labels:
-    app: ea-demo
+    app: argocd-test
     env: test
 spec: 
   containers:
