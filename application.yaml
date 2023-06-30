@@ -5,6 +5,12 @@ metadata:
   namespace: argocd
 spec:
   description: A testing project.
+  destinations:
+  - name: '*',
+    namespace: '*',
+    server: https://kubernetes.default.svc
+  sourceRepos:
+  - https://github.com/zachseifts/argocd-test.git
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
