@@ -1,0 +1,9 @@
+apiVersion: builtin
+kind: LabelTransformer
+metadata:
+  name: weather-stage-labels
+labels:
+  env: stage
+fieldSpecs:
+  - path: metadata/labels
+    create: true
