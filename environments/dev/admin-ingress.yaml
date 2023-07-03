@@ -3,4 +3,4 @@
   value: dev.testing.example.com
 - op: replace
   path: /spec/rules/0/http/paths/0/path
-  value: /admin2
+  value: /path/to/admin
