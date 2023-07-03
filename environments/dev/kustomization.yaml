@@ -1,15 +1,21 @@
 resources:
   - ../../base
 patches:
-  - path: ingress.yaml
+  - path: admin-ingress.yaml
     target:
       group: networking.k8s.io
       version: v1
       kind: Ingress
       name: admin-ingress
-  - path: ingress.yaml
+  - path: backend-ingress.yaml
     target:
       group: networking.k8s.io
       version: v1
       kind: Ingress
       name: backend-ingress
+  - path: frontend-ingress.yaml
+    target:
+      group: networking.k8s.io
+      version: v1
+      kind: Ingress
+      name: frontend-ingress
