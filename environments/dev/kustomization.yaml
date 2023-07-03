@@ -1,2 +1,9 @@
 resources:
   - ../../base
+patches:
+  - target:
+      group: networking.k8s.io
+      version: v1
+      kind: Ingress
+      name: admin-ingress
+    path: ingress.yaml
