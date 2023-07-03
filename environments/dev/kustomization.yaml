@@ -1,5 +1,7 @@
 resources:
   - ../../base
+transformers:
+  - labels.yaml
 patches:
   - path: admin-ingress.yaml
     target:
