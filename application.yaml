@@ -35,42 +35,42 @@ spec:
       selfHeal: true
     syncOptions:
     - CreateNamespace=true
-#---
-#apiVersion: argoproj.io/v1alpha1
-#kind: Application
-#metadata:
-#  name: testing-stage
-#  namespace: argocd
-#spec:
-#  destination:
-#    namespace: testing-stage
-#    server: https://kubernetes.default.svc
-#  project: testing
-#  source:
-#    path: stage
-#    repoURL: https://github.com/zachseifts/argocd-test.git
-#    targetRevision: HEAD
-#  syncPolicy:
-#    automated:
-#      prune: true
-#      selfHeal: true
-#    syncOptions:
-#    - CreateNamespace=true
-#---
-#apiVersion: argoproj.io/v1alpha1
-#kind: Application
-#metadata:
-#  name: testing-prod
-#  namespace: argocd
-#spec:
-#  destination:
-#    namespace: testing-prod
-#    server: https://kubernetes.default.svc
-#  project: testing
-#  source:
-#    path: prod
-#    repoURL: https://github.com/zachseifts/argocd-test.git
-#    targetRevision: HEAD
-#  syncPolicy:
-#    syncOptions:
-#    - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: weather-stage
+  namespace: argocd
+spec:
+  destination:
+    namespace: weather-stage
+    server: https://kubernetes.default.svc
+  project: weather
+  source:
+    path: environments/stage
+    repoURL: https://github.com/zachseifts/argocd-test.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: weather-prod
+  namespace: argocd
+spec:
+  destination:
+    namespace: weather-prod
+    server: https://kubernetes.default.svc
+  project: weather
+  source:
+    path: environments/prod
+    repoURL: https://github.com/zachseifts/argocd-test.git
+    targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
