@@ -1,10 +1,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata: 
-  name: testing
+  name: weather
   namespace: argocd
 spec:
-  description: A testing project.
+  description: A weather related project.
   destinations:
   - name: '*'
     namespace: '*'
@@ -15,13 +15,13 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: testing-dev
+  name: weather-dev
   namespace: argocd
 spec:
   destination:
-    namespace: testing-dev
+    namespace: weather-dev
     server: https://kubernetes.default.svc
-  project: testing
+  project: weather
   source:
     path: environments/dev
     repoURL: https://github.com/zachseifts/argocd-test.git
