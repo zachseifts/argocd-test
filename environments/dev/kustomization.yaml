@@ -7,15 +7,15 @@ patches:
       version: v1
       kind: Ingress
       name: admin-ingress
-#  - path: backend-ingress.yaml
-#    target:
-#      group: networking.k8s.io
-#      version: v1
-#      kind: Ingress
-#      name: backend-ingress
-#  - path: frontend-ingress.yaml
-#    target:
-#      group: networking.k8s.io
-#      version: v1
-#      kind: Ingress
-#      name: frontend-ingress
+  - path: backend-ingress.yaml
+    target:
+      group: networking.k8s.io
+      version: v1
+      kind: Ingress
+      name: backend-ingress
+  - path: frontend-ingress.yaml
+    target:
+      group: networking.k8s.io
+      version: v1
+      kind: Ingress
+      name: frontend-ingress
