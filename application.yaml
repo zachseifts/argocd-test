@@ -14,27 +14,27 @@ spec:
     server: https://kubernetes.default.svc
   sourceRepos:
   - https://github.com/zachseifts/argocd-test.git
-#---
-#apiVersion: argoproj.io/v1alpha1
-#kind: Application
-#metadata:
-#  name: weather-dev
-#  namespace: argocd
-#spec:
-#  destination:
-#    namespace: weather-dev
-#    server: https://kubernetes.default.svc
-#  project: weather
-#  source:
-#    path: environments/dev
-#    repoURL: https://github.com/zachseifts/argocd-test.git
-#    targetRevision: HEAD
-#  syncPolicy:
-#    automated:
-#      prune: true
-#      selfHeal: true
-#    syncOptions:
-#    - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: weather-dev
+  namespace: argocd
+spec:
+  destination:
+    namespace: weather-dev
+    server: https://kubernetes.default.svc
+  project: weather
+  source:
+    path: environments/dev
+    repoURL: https://github.com/zachseifts/argocd-test.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
 #---
 #apiVersion: argoproj.io/v1alpha1
 #kind: Application
