@@ -5,5 +5,8 @@ patches:
       group: networking.k8s.io
       version: v1
       kind: Ingress
-      name: admin-ingress
+      name: 
+       - admin-ingress
+       - backend-ingress
+       - frontend-ingress
     path: ingress.yaml
