@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: weather-dev
+spec:
+  generators:
+  - list:
+      elements:
+      - cluster: dev
+        url: https://kubernetes.default.svc
+        namespace: weather-dev
+      - cluster: stage
+        url: https://kubernetes.default.svc
+        namespace: weather-stage
+  template:
+    metadata:
+      name: '{{cluster}}-weather-dev'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/zachseifts/argocd-test.git
+        targetRevision: HEAD
+        path: environments/{{cluster}}
+      destination:
+        server: '{{url}}'
+        namespace: '{{namespace}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
