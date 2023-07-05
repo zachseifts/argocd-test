@@ -11,3 +11,7 @@ resources:
 commonLabels:
   app: weather
   env: prod
+configMapGenerator:
+  - name: redis-config
+    files:
+      - redis-config
