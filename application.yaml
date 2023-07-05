@@ -3,6 +3,8 @@ kind: AppProject
 metadata: 
   name: weather
   namespace: argocd
+  labels:
+    foo: bar
 spec:
   description: A weather related project.
   clusterResourceWhitelist:
