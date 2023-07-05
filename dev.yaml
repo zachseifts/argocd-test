@@ -1,4 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata: 
+  name: weather-dev
+  namespace: argocd
+spec:
+  description: A development environment for the weather project.
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  destinations:
+  - name: '*'
+    namespace: '*'
+    server: https://kubernetes.default.svc
+  sourceRepos:
+  - https://github.com/zachseifts/argocd-test.git
+---
+apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: weather-dev
@@ -14,9 +31,9 @@ spec:
         namespace: weather-stage
   template:
     metadata:
-      name: '{{cluster}}-weather-dev'
+      name: 'weather-{{cluster}}'
     spec:
-      project: default
+      project: weather-dev
       source:
         repoURL: https://github.com/zachseifts/argocd-test.git
         targetRevision: HEAD

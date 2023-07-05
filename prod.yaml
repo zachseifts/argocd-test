@@ -1,7 +1,24 @@
 apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata: 
+  name: weather-prod
+  namespace: argocd
+spec:
+  description: A production environment for the weather project.
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  destinations:
+  - name: '*'
+    namespace: '*'
+    server: https://kubernetes.default.svc
+  sourceRepos:
+  - https://github.com/zachseifts/argocd-test.git
+---
+apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: weather-dev
+  name: weather-prod
 spec:
   generators:
   - list:
@@ -11,9 +28,9 @@ spec:
         namespace: weather-prod
   template:
     metadata:
-      name: '{{cluster}}-weather-prod'
+      name: 'weather-{{cluster}}'
     spec:
-      project: default
+      project: weather-prod
       source:
         repoURL: https://github.com/zachseifts/argocd-test.git
         targetRevision: HEAD
@@ -21,5 +38,9 @@ spec:
       destination:
         server: '{{url}}'
         namespace: '{{namespace}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
         syncOptions:
         - CreateNamespace=true
