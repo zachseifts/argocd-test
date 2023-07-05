@@ -7,8 +7,6 @@ spec:
   - protocol: TCP
     port: 6379
     targetPort: 6379
-  selector:
-    app: testing
 ---
 apiVersion: v1
 kind: Pod
