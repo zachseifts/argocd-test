@@ -8,3 +8,6 @@ resources:
   - backend.yaml 
   - ingress.yaml 
   - redis.yaml 
+commonLabels:
+  app: weather
+  env: prod

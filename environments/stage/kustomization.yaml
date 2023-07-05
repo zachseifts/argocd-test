@@ -1,7 +1,7 @@
 resources:
   - ../../base
-transformers:
-  - labels.yaml
+commonLabels:
+  env: stage
 patches:
   - path: admin-ingress.yaml
     target:

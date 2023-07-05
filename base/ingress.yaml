@@ -4,9 +4,6 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
   name: admin-ingress
-  labels:
-    app: testing
-    env: prod
 spec:
   ingressClassName: public
   rules:
@@ -27,9 +24,6 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
   name: backend-ingress
-  labels:
-    app: testing
-    env: prod
 spec:
   ingressClassName: public
   rules:
@@ -50,9 +44,6 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
   name: frontend-ingress
-  labels:
-    app: testing
-    env: prod
 spec:
   ingressClassName: public
   rules:
