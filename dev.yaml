@@ -21,26 +21,25 @@ metadata:
   name: weather-dev
 spec:
   generators:
-  - list:
-      elements:
-      - cluster: dev
-        url: https://kubernetes.default.svc
-        namespace: weather-dev
-      - cluster: stage
-        url: https://kubernetes.default.svc
-        namespace: weather-stage
+  - git:
+      repoURL: https://github.com/zachseifts/argocd-test.git
+      revision: HEAD
+      directories:
+        - path: environments/*
+	- path: environments/prod
+	  exclude: true
   template:
     metadata:
-      name: 'weather-{{cluster}}'
+      name: 'weather-{{path.basename}}'
     spec:
       project: weather-dev
       source:
         repoURL: https://github.com/zachseifts/argocd-test.git
         targetRevision: HEAD
-        path: environments/{{cluster}}
+        path: '{{path}}'
       destination:
-        server: '{{url}}'
-        namespace: '{{namespace}}'
+        server: https://kubernetes.default.svc
+        namespace: '{{path.basename}}'
       syncPolicy:
         automated:
           prune: true
