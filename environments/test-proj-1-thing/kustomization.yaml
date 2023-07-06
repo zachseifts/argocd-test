@@ -1,0 +1,24 @@
+resources:
+  - ../../base
+commonLabels:
+  env: test-proj-1-thing
+namespace: weather-test-proj-1-thing
+patches:
+  - path: admin-ingress.yaml
+    target:
+      group: networking.k8s.io
+      version: v1
+      kind: Ingress
+      name: admin-ingress
+  - path: backend-ingress.yaml
+    target:
+      group: networking.k8s.io
+      version: v1
+      kind: Ingress
+      name: backend-ingress
+  - path: frontend-ingress.yaml
+    target:
+      group: networking.k8s.io
+      version: v1
+      kind: Ingress
+      name: frontend-ingress
