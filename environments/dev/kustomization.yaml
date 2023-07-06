@@ -2,6 +2,7 @@ resources:
   - ../../base
 commonLabels:
   env: dev
+namespace: weather-dev
 patches:
   - path: admin-ingress.yaml
     target:

@@ -2,6 +2,7 @@ resources:
   - ../../base
 commonLabels:
   env: stage
+namespace: weather-stage
 patches:
   - path: admin-ingress.yaml
     target:

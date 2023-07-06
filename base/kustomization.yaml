@@ -3,6 +3,7 @@ kind: Kustomization
 metadata:
   name: base-testing
 resources:
+  - namespace.yaml
   - admin.yaml 
   - frontend.yaml 
   - backend.yaml 
