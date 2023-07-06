@@ -26,8 +26,8 @@ spec:
       revision: HEAD
       directories:
         - path: environments/*
-	- path: environments/prod
-	  exclude: true
+        - path: environments/prod
+          exclude: true
   template:
     metadata:
       name: 'weather-{{path.basename}}'
