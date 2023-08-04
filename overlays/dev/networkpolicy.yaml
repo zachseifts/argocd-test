@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: testing-cache-networkpolicy
+  labels:
+    app.kubernetes.io/component: network
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: testing
+      app.kubernetes.io/component: backend
+      app.kubernetes.io/instance: dev
+  policyTypes:
+    - Ingress
+  ingress: 
+    - from:
+      - podSelector:
+          matchLabels:
+            app.kubernetes.io/name: testing
+            app.kubernetes.io/component: cache
+            app.kubernetes.io/instance: dev
+      ports:
+        - port: 6379
+          protocol: TCP
