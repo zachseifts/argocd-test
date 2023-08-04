@@ -25,8 +25,8 @@ spec:
       repoURL: https://github.com/zachseifts/argocd-test.git
       revision: HEAD
       directories:
-        - path: environments/*
-        - path: environments/prod
+        - path: overlays/*
+        - path: overlays/prod
           exclude: true
   template:
     metadata:

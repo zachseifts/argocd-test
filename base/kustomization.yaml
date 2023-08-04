@@ -1,18 +1,11 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-metadata:
-  name: base-testing
-resources:
-  - namespace.yaml
-  - admin.yaml 
-  - frontend.yaml 
-  - backend.yaml 
-  - ingress.yaml 
-  - redis.yaml 
 commonLabels:
-  app: weather
-  env: prod
+  app.kubernetes.io/name: testing
+resources:
 configMapGenerator:
-  - name: redis-config
+  - name: testing-cache-config
     files:
-      - redis-config
+      - config/cache-config
+patchesStrategicMerge:
+  - patches/patch-testing-cache-config.yaml
