@@ -9,3 +9,15 @@ configMapGenerator:
       - config/cache-config
 patchesStrategicMerge:
   - patches/patch-testing-cache-config.yaml
+patches:
+  - target:
+      kind: ConfigMap
+      name: testing-cache-config
+    patch: |-
+      apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: testing-cache-config
+        labels:
+          app.kubernetes.io/component: backend
+  
