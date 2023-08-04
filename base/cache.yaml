@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: testing-cache-service
+  labels:
+    app.kubernetes.io/component: backend
+spec:
+  ports:
+  - protocol: TCP
+    port: 6379
+    targetPort: 6379
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: testing-cache
+  labels:
+    app.kubernetes.io/component: backend
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/component: backend
+    spec: 
+      containers:
+        - name: redis
+          image: redis:alpine
+          command:
+            - redis-server
+            - "/redis/redis.conf"
+          ports:
+            - containerPort: 6379
+          resources:
+            limits:
+              cpu: "0.1"
+          volumeMounts:
+            - mountPath: /redis-data
+              name: data
+            - mountPath: /redis
+              name: config
+      volumes:
+        - name: data
+          emptyDir: {}
+        - name: config
+          configMap:
+            name: "testing-cache-config"
+            items:
+              - key: cache-config
+                path: redis.conf
