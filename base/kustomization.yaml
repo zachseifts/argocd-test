@@ -7,8 +7,6 @@ configMapGenerator:
   - name: testing-cache-config
     files:
       - config/cache-config
-patchesStrategicMerge:
-  - patches/patch-testing-cache-config.yaml
 patches:
   - target:
       kind: ConfigMap
