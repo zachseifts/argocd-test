@@ -32,7 +32,7 @@ spec:
     metadata:
       name: 'testing-{{path.basename}}'
       labels:
-        app.kubernetes.io/name: 'testing-{{path.basename}}'
+        app.kubernetes.io/name: testing
         app.kubernetes.io/instance: '{{path.basename}}'
     spec:
       project: testing-dev
