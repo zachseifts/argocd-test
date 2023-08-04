@@ -1,10 +1,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata: 
-  name: weather-prod
+  name: testing-prod
   namespace: argocd
 spec:
-  description: A production environment for the weather project.
+  description: A production testing environment.
   clusterResourceWhitelist:
   - group: '*'
     kind: '*'
@@ -18,7 +18,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: weather-prod
+  name: testing-prod
 spec:
   generators:
   - list:
@@ -27,16 +27,16 @@ spec:
         url: https://kubernetes.default.svc
   template:
     metadata:
-      name: 'weather-{{cluster}}'
+      name: 'testing-{{cluster}}'
     spec:
-      project: weather-prod
+      project: testing-prod
       source:
         repoURL: https://github.com/zachseifts/argocd-test.git
         targetRevision: HEAD
         path: environments/{{cluster}}
       destination:
         server: '{{url}}'
-        namespace: 'weather-{{cluster}}'
+        namespace: 'testing-{{cluster}}'
       syncPolicy:
         automated:
           prune: true
