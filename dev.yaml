@@ -39,7 +39,7 @@ spec:
         path: '{{path}}'
       destination:
         server: https://kubernetes.default.svc
-        namespace: 'testing-{{path.basename}}'
+        namespace: default
       syncPolicy:
         automated:
           prune: true
