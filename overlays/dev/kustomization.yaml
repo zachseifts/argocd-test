@@ -5,4 +5,4 @@ commonLabels:
   app.kubernetes.io/instance: dev
 resources:
   - ../../base
-  - networkpolicy.yaml
+# - networkpolicy.yaml

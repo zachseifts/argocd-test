@@ -3,21 +3,22 @@ kind: Kustomization
 commonLabels:
   app.kubernetes.io/name: testing
 resources:
-  - cache.yaml
+#  - cache.yaml
   - backend.yaml
-configMapGenerator:
-  - name: testing-cache-config
-    files:
-      - config/cache-config
-patches:
-  - target:
-      kind: ConfigMap
-      name: testing-cache-config
-    patch: |-
-      apiVersion: v1
-      kind: ConfigMap
-      metadata:
-        name: testing-cache-config
-        labels:
-          app.kubernetes.io/component: backend
-  
+  - frontend.yaml
+#configMapGenerator:
+#  - name: testing-cache-config
+#    files:
+#      - config/cache-config
+#patches:
+#  - target:
+#      kind: ConfigMap
+#      name: testing-cache-config
+#    patch: |-
+#      apiVersion: v1
+#      kind: ConfigMap
+#      metadata:
+#        name: testing-cache-config
+#        labels:
+#          app.kubernetes.io/component: backend
+#  
