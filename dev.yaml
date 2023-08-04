@@ -31,6 +31,9 @@ spec:
   template:
     metadata:
       name: 'testing-{{path.basename}}'
+      labels:
+        app.kubernetes.io/name: 'testing-{{path.basename}}'
+        app.kubernetes.io/instance: '{{path.basename}}'
     spec:
       project: testing-dev
       source:
